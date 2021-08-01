@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gasoline Cars</title>
+    <link rel="stylesheet" href="styles/app.css">
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src='https://d3js.org/d3.v5.min.js'></script>
+    <style> circle {fill: lightblue; stroke: black;} </style>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-annotation/2.5.1/d3-annotation.min.js"
+            integrity="sha512-iBAeBWWWFb8HqSBcrqcz98iIpuVH1la39dEYHtyQ/pGpeCQTQVvLJOWAuhv2Q7JSHp9k7hWA7sGxU3hHJe+tFg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body onload='init()'>
+    <div class="container">
+        <div id="slide-2">
+        <h1>Diesel Cars</h1>
+        <h2 class="mt-30">
+                Diesel cars.
+        </h2>
+        <svg width=300 height=300>
+        </svg>
+        <script>
+        async function init() {
+        const data = await d3.csv('https://flunky.github.io/cars2017.csv');
+        var x = d3.scaleLinear().domain([Math.log(10),Math.log(150)]).range([0,200]);
+        var y = d3.scaleLinear().domain([Math.log(10),Math.log(150)]).range([200,0]);
+        var svg = d3.select("svg").append("g").attr("transform","translate(50,50)");
+        svg.selectAll("circle").data(data).enter().append("circle").attr("cx",function(d,i){return x(Math.log(d.AverageCityMPG));}).attr("cy",function(d,i){return y(Math.log(d.AverageHighwayMPG));}).attr("r",function(d){return 2 + parseInt(d.EngineCylinders);});
+        d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft().scale(y).tickValues([Math.log(10),Math.log(20),Math.log(50),Math.log(100)]).tickFormat("~s"));
+        d3.select("svg").append("g").attr("transform","translate(50,250)").call(d3.axisBottom().scale(x).tickValues([Math.log(10),Math.log(20),Math.log(50),Math.log(100)]).tickFormat("~s"));
+        }
+        </script>
+        </div>
+        <p>
+        <a class="btn btn-primary btn-s" href="scene1.html" role="button">Previous</a>
+        <a class="btn btn-primary btn-s" href="scene3.html" role="button">Next</a>
+        </p>
+    </div>
+</body>
+</html>
