@@ -34,7 +34,7 @@
 <body onload='init()'>
 <svg width=300 height=300></svg>
 <script>
-async function init() {
+    async function init() {
     const data = await d3.csv('https://flunky.github.io/cars2017.csv');
     var x = d3.scaleLinear().domain([Math.log(10),Math.log(150)]).range([0,200]);
     var y = d3.scaleLinear().domain([Math.log(10),Math.log(150)]).range([200,0]);
