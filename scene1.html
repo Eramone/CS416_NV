@@ -29,15 +29,15 @@
                 Gasoline cars currently are the most widely used kind of cars. Compared to hybrid vehicles, they have better power, lower price and maintenance cost, and better agility. However, they also suffer from low mileage
             and harmful emissions.
         </h4>
-        <svg width=300 height=300>
+        <svg width=800 height=800>
         </svg>
         <script>
         async function init() {
         const data = await d3.csv('https://eramone.github.io/CS416_NV/cars2017_gas.csv');
-        var x = d3.scaleLinear().domain([Math.log(10),Math.log(150)]).range([0,200]);
-        var y = d3.scaleLinear().domain([Math.log(10),Math.log(150)]).range([200,0]);
+        var x = d3.scaleLinear().domain([Math.log(10),Math.log(150)]).range([0,800]);
+        var y = d3.scaleLinear().domain([Math.log(10),Math.log(150)]).range([800,0]);
         var svg = d3.select("svg").append("g").attr("transform","translate(50,50)");
-        svg.selectAll("circle").data(data).enter().append("circle").attr("cx",function(d,i){return x(Math.log(d.AverageCityMPG));}).attr("cy",function(d,i){return y(Math.log(d.AverageHighwayMPG));}).attr("r",function(d){return 2 + parseInt(d.EngineCylinders);});
+        svg.selectAll("circle").data(data).enter().append("circle").attr("cx",function(d,i){return x(Math.log(d.AverageCityMPG));}).attr("cy",function(d,i){return y(Math.log(d.AverageHighwayMPG));}).attr("r",30});
         d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft().scale(y).tickValues([Math.log(10),Math.log(20),Math.log(50),Math.log(100)]).tickFormat("~s"));
         d3.select("svg").append("g").attr("transform","translate(50,250)").call(d3.axisBottom().scale(x).tickValues([Math.log(10),Math.log(20),Math.log(50),Math.log(100)]).tickFormat("~s"));
         }
