@@ -44,7 +44,7 @@
             var y = d3.scaleLinear().domain([Math.log(10),Math.log(50)]).range([500,0]);
             d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft().scale(y).tickValues([Math.log(10),Math.log(20),Math.log(50)])
                                                                                    .tickFormat((d, i) => ['10', '20', '50'][i]));
-            d3.select("svg").append("text").attr("text-anchor","end").attr("transform", "rotate(-90)").attr("y",300).attr("x",300).text("Average Highway MPG");
+            d3.select("svg").append("text").attr("text-anchor","end").attr("transform", "rotate(-90)").attr("y",300).attr("x",20).text("Average Highway MPG");
             // Add a tooltip div. Here I define the general feature of the tooltip: stuff that do not depend on the data point.
             // Its opacity is set to 0: we don't see it by default.
             var tooltip = d3.select("#slide-2").append("div").style("opacity", 0).attr("class", "tooltip").style("background-color", "white").style("border", "solid")
