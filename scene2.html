@@ -37,7 +37,7 @@
             d3.csv("https://eramone.github.io/CS416_NV/cars2017_Diesel.csv", function(data) {
             // Add X axis
             var x = d3.scaleLinear().domain([Math.log(10),Math.log(50)]).range([0,500]);
-            d3.select("svg").append("g").attr("transform","translate(50,550)").call(d3.axisBottom().scale(x).tickValues([Math.log(10),Math.log(20),Math.log(50)]).tickFormat("~s"));
+            d3.select("svg").append("g").attr("transform","translate(50,550)").call(d3.axisBottom().scale(x).tickValues([Math.log(10),Math.log(20),Math.log(50)]).tickFormat(d3.format("~s")));
             // Add Y axis
             var y = d3.scaleLinear().domain([Math.log(10),Math.log(50)]).range([500,0]);
             d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft().scale(y).tickValues([Math.log(10),Math.log(20),Math.log(50)]));
