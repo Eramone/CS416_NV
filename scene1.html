@@ -6,6 +6,7 @@
     <title>Gasoline Cars</title>
     <link rel="stylesheet" href="styles/app.css">
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
     <script src="scripts/app.js"></script>
     <script src="https://d3js.org/d3.v4.js"></script>
     <!-- Latest compiled and minified CSS -->
@@ -32,6 +33,19 @@
         <svg width=600 height=600>
         </svg>
         <script>
+            const annotations = [
+            {
+            note: {
+                  label: "Many gasoline cars has average city MPGs around 20, and slightly higher average highway MPGs.",
+                  },
+                  x: 100,
+                  y: 100,
+                  dy: 100,
+                  dx: 100
+                  }
+            ]
+            const makeAnnotations = d3.annotation().annotations(annotations)
+            d3.select("#slide-1").append("g").call(makeAnnotations)
             // append the svg object to the body of the page
             var svg = d3.select("svg").append("g").attr("transform","translate(50,50)");
             //Read the data
