@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Gasoline Cars</title>
     <link rel="stylesheet" href="styles/app.css">
+    <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="scripts/app.js"></script>
     <script src="https://d3js.org/d3.v4.js"></script>
@@ -28,9 +29,22 @@
         <h4 class="mt-30">
                 Diesel cars have higher fuel efficiency and lower fire hazard, but they are also less environmentally friendly and more expensive than similar gasoline models.
         </h4>
-        <svg width=600 height=600>
+        <svg width=600 height=600 id="example1">
         </svg>
         <script>
+            const annotations = [
+            {
+            note: {
+                  label: "All diesel cars have average city MPGs above 20 and average highway MPGs well above 25.",
+                  },
+                  x: 280,
+                  y: 280,
+                  dy: 60,
+                  dx: 60
+                  }
+            ];
+            const makeAnnotations = d3.annotation().annotations(annotations);
+            d3.select("#example1").append("g").call(makeAnnotations);
             // append the svg object to the body of the page
             var svg = d3.select("svg").append("g").attr("transform","translate(50,50)");
             //Read the data
