@@ -30,7 +30,7 @@
                 Gasoline cars currently are the most widely used kind of cars. Compared to hybrid vehicles, they have better power, 
             lower price and maintenance cost, and better agility. However, they also suffer from low mileage and harmful emissions.
         </h4>
-        <svg width=600 height=600>
+        <svg width=600 height=600 id="example1">
         </svg>
         <script>
             const annotations = [
@@ -45,6 +45,7 @@
                   }
             ];
             const makeAnnotations = d3.annotation().annotations(annotations);
+            d3.select("#example1").append("g").call(makeAnnotations);
             // append the svg object to the body of the page
             var svg = d3.select("svg").append("g").attr("transform","translate(50,50)");
             //Read the data
