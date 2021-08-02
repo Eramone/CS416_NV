@@ -45,7 +45,7 @@
                   }
             ];
             const makeAnnotations = d3.annotation().annotations(annotations);
-            d3.select("#slide-1").append("g").call(makeAnnotations)
+            d3.select("#slide-1").append("g").call(makeAnnotations);
             // append the svg object to the body of the page
             var svg = d3.select("svg").append("g").attr("transform","translate(50,50)");
             //Read the data
