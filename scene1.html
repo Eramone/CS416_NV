@@ -33,6 +33,18 @@
         <svg width=600 height=600>
         </svg>
         <script>
+            const annotations = [
+            {
+            note: {
+                  label: "Many gasoline cars has average city MPGs around 20, and slightly higher average highway MPGs.",
+                  },
+                  x: 300,
+                  y: 300,
+                  dy: 300,
+                  dx: 300
+                  }
+            ];
+            const makeAnnotations = d3.annotation().annotations(annotations);
             // append the svg object to the body of the page
             var svg = d3.select("svg").append("g").attr("transform","translate(50,50)");
             //Read the data
