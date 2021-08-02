@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Electric Cars</title>
     <link rel="stylesheet" href="styles/app.css">
+    <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="scripts/app.js"></script>
     <script src="https://d3js.org/d3.v4.js"></script>
@@ -29,9 +30,22 @@
                 Compared to cars using traditional energy sources, electric cars are energy efficient and produce less emissions, but the energy storage is smaller, and it takes 
             a longer time to "fuel" them.
         </h4>
-        <svg width=600 height=600>
+        <svg width=600 height=600 id="example1">
         </svg>
         <script>
+            const annotations = [
+            {
+            note: {
+                  label: "All electric cars have average city and highway MPGs above 28, showing significantly higher energy efficiencies.",
+                  },
+                  x: 510,
+                  y: 100,
+                  dy: 30,
+                  dx: 30
+                  }
+            ];
+            const makeAnnotations = d3.annotation().annotations(annotations);
+            d3.select("#example1").append("g").call(makeAnnotations);
             // append the svg object to the body of the page
             var svg = d3.select("svg").append("g").attr("transform","translate(50,50)");
             //Read the data
@@ -72,8 +86,7 @@
         </script>
         </div>
         <p>
-        <a class="btn btn-primary btn-s" href="index.html" role="button">Previous</a>
-        <a class="btn btn-primary btn-s" href="scene2.html" role="button">Next</a>
+        <a class="btn btn-primary btn-s" href="scene2.html" role="button">Previous</a>
         </p>
     </div>
 </body>
