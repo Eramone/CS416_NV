@@ -36,11 +36,11 @@
             //Read the data
             d3.csv("https://eramone.github.io/CS416_NV/cars2017_Diesel.csv", function(data) {
             // Add X axis
-            var x = d3.scaleLinear().domain([Math.log(10),Math.log(150)]).range([0, 500]);
+            var x = d3.scaleLinear().domain([Math.log(10),Math.log(50)]).range([0,500]);
             svg.append("g").attr("transform","translate(50,550)").call(d3.axisBottom(x).tickValues([Math.log(10),Math.log(20),Math.log(50)]));
             // Add Y axis
-            var y = d3.scaleLinear().domain([Math.log(10),Math.log(150)]).range([500, 0]);
-            svg.append("g").attr("transform","translate(50,50)").call(d3.axisLeft(y).tickValues([Math.log(10),Math.log(20),Math.log(50)]));
+            var y = d3.scaleLinear().domain([Math.log(10),Math.log(50)]).range([500,0]);
+            d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft().scale(y).tickValues([Math.log(10),Math.log(20),Math.log(50)]));
             });
         </script>
         </div>
