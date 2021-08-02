@@ -37,14 +37,14 @@
             //Read the data
             d3.csv("https://eramone.github.io/CS416_NV/cars2017_Electricity.csv", function(data) {
             // Add X axis
-            var x = d3.scaleLinear().domain([Math.log(10),Math.log(150)]).range([0,500]);
-            d3.select("svg").append("g").attr("transform","translate(50,550)").call(d3.axisBottom().scale(x).tickValues([Math.log(10),Math.log(20),Math.log(50),Math.log(100)])
-                                                                                    .tickFormat((d, i) => ['10', '20', '50', '100'][i]));
+            var x = d3.scaleLinear().domain([Math.log(10),Math.log(200)]).range([0,500]);
+            d3.select("svg").append("g").attr("transform","translate(50,550)").call(d3.axisBottom().scale(x).tickValues([Math.log(10),Math.log(20),Math.log(50),Math.log(100),Math.log(200)])
+                                                                                    .tickFormat((d, i) => ['10', '20', '50', '100', '200'][i]));
             d3.select("svg").append("text").attr("text-anchor","end").attr("y",580).attr("x",350).text("Average City MPG");
             // Add Y axis
-            var y = d3.scaleLinear().domain([Math.log(10),Math.log(150)]).range([500,0]);
-            d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft().scale(y).tickValues([Math.log(10),Math.log(20),Math.log(50),Math.log(100)])
-                                                                                   .tickFormat((d, i) => ['10', '20', '50', '100'][i]));
+            var y = d3.scaleLinear().domain([Math.log(10),Math.log(200)]).range([500,0]);
+            d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft().scale(y).tickValues([Math.log(10),Math.log(20),Math.log(50),Math.log(100),Math.log(200)])
+                                                                                   .tickFormat((d, i) => ['10', '20', '50', '100', '200'][i]));
             d3.select("svg").append("text").attr("text-anchor","end").attr("transform", "rotate(-90)").attr("y",20).attr("x",-220).text("Average Highway MPG");
             // Add a tooltip div. Here I define the general feature of the tooltip: stuff that do not depend on the data point.
             // Its opacity is set to 0: we don't see it by default.
