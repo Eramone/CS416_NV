@@ -38,13 +38,13 @@
             note: {
                   label: "Many gasoline cars has average city MPGs around 20, and slightly higher average highway MPGs.",
                   },
-                  x: 100,
-                  y: 100,
-                  dy: 100,
-                  dx: 100
+                  x: 300,
+                  y: 300,
+                  dy: 300,
+                  dx: 300
                   }
-            ]
-            const makeAnnotations = d3.annotation().annotations(annotations)
+            ];
+            const makeAnnotations = d3.annotation().annotations(annotations);
             d3.select("#slide-1").append("g").call(makeAnnotations)
             // append the svg object to the body of the page
             var svg = d3.select("svg").append("g").attr("transform","translate(50,50)");
